@@ -5,7 +5,7 @@ const userInfo = document.querySelector('#user-info')
 const userCount = document.querySelector('#user-count')
 
 function changeBody(b, uInfo, uCount) {
-    return (colorChangeBtn, uColor, backColor) => {
+    return (colorChangeBtn, uColor, backColor, firstBtn, secondBtn) => {
         colorChangeBtn.addEventListener('click', () => {
             b.style = `
             height: 100vh;
@@ -28,23 +28,19 @@ function changeBody(b, uInfo, uCount) {
             margin-bottom: 10px;
             transition: 300ms;
             `
+            firstBtn.style = `
+            display: none;
+            `
+            secondBtn.style = `
+            display: inline;
+            `
         })
     }
 }
 
 const setBody = changeBody(body, userInfo, userCount)
-setBody(btnLight, '#000', '#fff')
-setBody(btnDark, '#fff', '#000')
-
-btnLight.addEventListener('click', () => {
-    btnLight.style = 'display: none'
-    btnDark.style = 'display: inline'
-})
-
-btnDark.addEventListener('click', () => {
-    btnLight.style = 'display: inline'
-    btnDark.style = 'display: none'
-})
+setBody(btnLight, '#000', '#fff', btnLight, btnDark)
+setBody(btnDark, '#fff', '#000', btnDark, btnLight)
 
 const btnFirstName = document.querySelector('#btn-first-name')
 const btnLastName = document.querySelector('#btn-last-name')
